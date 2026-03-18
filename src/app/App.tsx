@@ -3,6 +3,7 @@ import { HeroSection } from "./components/HeroSection";
 import { AboutSection } from "./components/AboutSection";
 import { HowItWorksSection } from "./components/HowItWorksSection";
 import { TriageDemoSection } from "./components/TriageDemoSection";
+import { PharmacyFinderSection } from "./components/PharmacyFinderSection"; // <-- Yangi komponent ulandi
 import { BenefitsSection } from "./components/BenefitsSection";
 
 export default function App() {
@@ -27,6 +28,9 @@ export default function App() {
       <div ref={demoRef}>
         <TriageDemoSection />
       </div>
+      
+      {/* Dorixona va narxlarni qidirish bo'limi */}
+      <PharmacyFinderSection />
       
       {/* Benefits Section */}
       <BenefitsSection />
