@@ -14,11 +14,11 @@ export function HeroSection({ onStartClick }: HeroSectionProps) {
           </div>
         </div>
         
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-8 leading-tight">
+      <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-gray-900 mb-8 leading-tight">
           MedRoute AI
         </h1>
         
-        <p className="text-3xl md:text-4xl lg:text-5xl text-gray-700 mb-6 leading-snug">
+        <p className="text-3xl md:text-3xl lg:text-5xl text-gray-700 mb-6 leading-snug">
           Bemorlarni aqlli yo'naltirish tizimi
         </p>
         
