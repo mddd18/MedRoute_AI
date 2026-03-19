@@ -1,55 +1,52 @@
-import { useRef } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
 import { AboutSection } from "./components/AboutSection";
 import { HowItWorksSection } from "./components/HowItWorksSection";
 import { TriageDemoSection } from "./components/TriageDemoSection";
-import { DoctorScheduleSection } from "./components/DoctorScheduleSection"; // <-- Import qilindi
+import { DoctorScheduleSection } from "./components/DoctorScheduleSection";
 import { PharmacyFinderSection } from "./components/PharmacyFinderSection";
 import { BenefitsSection } from "./components/BenefitsSection";
 
-export default function App() {
-  const demoRef = useRef<HTMLDivElement>(null);
-
-  const scrollToDemo = () => {
-    demoRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
+// Asosiy (Landing) sahifa
+function HomePage() {
   return (
-    <div className="size-full bg-white">
-      {/* Hero Section */}
-      <HeroSection onStartClick={scrollToDemo} />
-      
-      {/* About Section */}
+    <>
+      <HeroSection onStartClick={() => window.location.href = '/kiosk'} />
       <AboutSection />
-      
-      {/* How It Works Section */}
       <HowItWorksSection />
-      
-      {/* Triage Demo Section (Aqlli saralash) */}
-      <div ref={demoRef}>
-        <TriageDemoSection />
-      </div>
-
-      {/* YANGI BO'LIM: Shifokorlar jadvali va bandligi */}
-      <DoctorScheduleSection />
-      
-      {/* Dorixona va narxlarni qidirish bo'limi */}
-      <PharmacyFinderSection />
-      
-      {/* Benefits Section */}
       <BenefitsSection />
-      
-      {/* Footer */}
-      <footer className="bg-[#0056D2] text-white py-12 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-2xl md:text-3xl mb-2">
-            MedRoute AI © 2026
-          </p>
-          <p className="text-xl md:text-2xl text-blue-200">
-            Oilaviy poliklinikalar uchun sun'iy intellekt yechimi
-          </p>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <div className="size-full bg-white flex flex-col min-h-screen">
+        {/* Tepa menyu barcha sahifalarda ko'rinadi */}
+        <Navbar />
+
+        {/* Sahifalar (Marshrutlar) */}
+        <div className="flex-1 w-full">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/kiosk" element={<TriageDemoSection />} />
+            <Route path="/tablo" element={<DoctorScheduleSection />} />
+            <Route path="/dorixona" element={<PharmacyFinderSection />} />
+          </Routes>
         </div>
-      </footer>
-    </div>
+
+        {/* Footer barcha sahifalarda eng pastda ko'rinadi */}
+        <footer className="bg-[#0056D2] text-white py-12 px-6 mt-auto">
+          <div className="max-w-6xl mx-auto text-center">
+            <p className="text-2xl md:text-3xl mb-2">MedRoute AI © 2026</p>
+            <p className="text-xl md:text-2xl text-blue-200">
+              Oilaviy poliklinikalar uchun sun'iy intellekt yechimi
+            </p>
+          </div>
+        </footer>
+      </div>
+    </Router>
   );
 }
