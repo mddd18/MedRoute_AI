@@ -25,10 +25,9 @@ export function Navbar() {
   const closeMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <div className="fixed top-4 md:top-6 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
-      
-      {/* Asosiy Navbar qutisi (Shisha effekti) */}
-      <nav className="pointer-events-auto bg-white/70 backdrop-blur-xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.08)] rounded-2xl md:rounded-full px-4 py-3 flex flex-col w-full max-w-5xl transition-all duration-300">
+    {/* "sticky top-0 w-full" orqali eng tepaga yopishib turadi */}
+    <nav className="sticky top-0 z-50 w-full bg-white/70 backdrop-blur-xl border-b border-gray-200/50 shadow-sm transition-all duration-300">
+      <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col w-full">
         
         {/* Tepa qator: Logotip va Menyuni ochish tugmasi */}
         <div className="flex justify-between items-center w-full">
@@ -80,7 +79,7 @@ export function Navbar() {
           </div>
         )}
         
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 }
