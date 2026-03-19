@@ -3,7 +3,8 @@ import { HeroSection } from "./components/HeroSection";
 import { AboutSection } from "./components/AboutSection";
 import { HowItWorksSection } from "./components/HowItWorksSection";
 import { TriageDemoSection } from "./components/TriageDemoSection";
-import { PharmacyFinderSection } from "./components/PharmacyFinderSection"; // <-- Yangi komponent ulandi
+import { DoctorScheduleSection } from "./components/DoctorScheduleSection"; // <-- Import qilindi
+import { PharmacyFinderSection } from "./components/PharmacyFinderSection";
 import { BenefitsSection } from "./components/BenefitsSection";
 
 export default function App() {
@@ -24,10 +25,13 @@ export default function App() {
       {/* How It Works Section */}
       <HowItWorksSection />
       
-      {/* Triage Demo Section */}
+      {/* Triage Demo Section (Aqlli saralash) */}
       <div ref={demoRef}>
         <TriageDemoSection />
       </div>
+
+      {/* YANGI BO'LIM: Shifokorlar jadvali va bandligi */}
+      <DoctorScheduleSection />
       
       {/* Dorixona va narxlarni qidirish bo'limi */}
       <PharmacyFinderSection />
