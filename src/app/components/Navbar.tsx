@@ -13,17 +13,22 @@ export function Navbar() {
 
   return (
     <nav className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-[#0056D2] flex items-center gap-2">
-          <Activity className="w-8 h-8" />
+      <div className="max-w-6xl mx-auto px-4 py-3 md:px-6 md:py-4 flex flex-col md:flex-row justify-between items-center gap-3">
+        
+        {/* Logotip */}
+        <Link to="/" className="text-xl md:text-2xl font-bold text-[#0056D2] flex items-center gap-2">
+          <Activity className="w-6 h-6 md:w-8 md:h-8" />
           MedRoute AI
         </Link>
-        <div className="hidden md:flex gap-8 text-lg">
-          <Link to="/" className={`py-1 ${isActive("/")}`}>Asosiy</Link>
-          <Link to="/kiosk" className={`py-1 ${isActive("/kiosk")}`}>Kiosk</Link>
-          <Link to="/tablo" className={`py-1 ${isActive("/tablo")}`}>Tablo</Link>
-          <Link to="/dorixona" className={`py-1 ${isActive("/dorixona")}`}>Dorixona</Link>
+        
+        {/* Tugmalar qatori (Endi telefonda ham doim ko'rinadi) */}
+        <div className="flex gap-4 md:gap-8 text-sm md:text-lg overflow-x-auto w-full md:w-auto justify-center pb-1 md:pb-0 scrollbar-hide">
+          <Link to="/" className={`py-1 whitespace-nowrap ${isActive("/")}`}>Asosiy</Link>
+          <Link to="/kiosk" className={`py-1 whitespace-nowrap ${isActive("/kiosk")}`}>Kiosk</Link>
+          <Link to="/tablo" className={`py-1 whitespace-nowrap ${isActive("/tablo")}`}>Tablo</Link>
+          <Link to="/dorixona" className={`py-1 whitespace-nowrap ${isActive("/dorixona")}`}>Dorixona</Link>
         </div>
+        
       </div>
     </nav>
   );
