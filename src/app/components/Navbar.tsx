@@ -4,32 +4,40 @@ import { Activity } from "lucide-react";
 export function Navbar() {
   const location = useLocation();
   
-  // Qaysi sahifadaligiga qarab menyu rangini o'zgartirish
+  // Faol sahifa uchun chiroyli "kapsula" stili
   const isActive = (path: string) => {
     return location.pathname === path 
-      ? "text-[#0056D2] font-bold border-b-2 border-[#0056D2]" 
-      : "text-gray-600 hover:text-[#0056D2] transition-colors";
+      ? "bg-white text-[#0056D2] shadow-sm rounded-full" 
+      : "text-gray-600 hover:text-gray-900 hover:bg-white/50 rounded-full transition-all";
   };
 
   return (
-    <nav className="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
-      <div className="max-w-6xl mx-auto px-4 py-3 md:px-6 md:py-4 flex flex-col md:flex-row justify-between items-center gap-3">
+    <div className="fixed top-6 left-0 w-full z-50 flex justify-center px-4 pointer-events-none">
+      <nav className="pointer-events-auto bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.04)] rounded-full px-4 py-2 flex justify-between items-center w-full max-w-5xl transition-all duration-300">
         
-        {/* Logotip */}
-        <Link to="/" className="text-xl md:text-2xl font-bold text-[#0056D2] flex items-center gap-2">
-          <Activity className="w-6 h-6 md:w-8 md:h-8" />
-          MedRoute AI
+        <Link to="/" className="flex items-center gap-2 px-3 py-2 group">
+          <div className="bg-gradient-to-tr from-[#0056D2] to-blue-400 p-2 rounded-full shadow-md group-hover:scale-105 transition-transform">
+            <Activity className="w-5 h-5 text-white" />
+          </div>
+          <span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 tracking-tight">
+            MedRoute
+          </span>
         </Link>
         
-        {/* Tugmalar qatori (Endi telefonda ham doim ko'rinadi) */}
-        <div className="flex gap-4 md:gap-8 text-sm md:text-lg overflow-x-auto w-full md:w-auto justify-center pb-1 md:pb-0 scrollbar-hide">
-          <Link to="/" className={`py-1 whitespace-nowrap ${isActive("/")}`}>Asosiy</Link>
-          <Link to="/kiosk" className={`py-1 whitespace-nowrap ${isActive("/kiosk")}`}>Kiosk</Link>
-          <Link to="/tablo" className={`py-1 whitespace-nowrap ${isActive("/tablo")}`}>Tablo</Link>
-          <Link to="/dorixona" className={`py-1 whitespace-nowrap ${isActive("/dorixona")}`}>Dorixona</Link>
+        <div className="hidden md:flex items-center gap-1 p-1 bg-gray-100/40 rounded-full border border-gray-200/50">
+          <Link to="/" className={`px-5 py-2.5 font-medium text-sm transition-all duration-300 ${isActive("/")}`}>Asosiy</Link>
+          <Link to="/kiosk" className={`px-5 py-2.5 font-medium text-sm transition-all duration-300 ${isActive("/kiosk")}`}>Kiosk</Link>
+          <Link to="/tablo" className={`px-5 py-2.5 font-medium text-sm transition-all duration-300 ${isActive("/tablo")}`}>Tablo</Link>
+          <Link to="/dorixona" className={`px-5 py-2.5 font-medium text-sm transition-all duration-300 ${isActive("/dorixona")}`}>Dorixona</Link>
+        </div>
+
+        <div className="md:hidden flex gap-2">
+          <Link to="/kiosk" className="bg-[#0056D2] text-white px-4 py-2 rounded-full text-sm font-medium">
+            Kiosk
+          </Link>
         </div>
         
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 }
